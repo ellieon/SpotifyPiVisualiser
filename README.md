@@ -21,4 +21,4 @@ After setting these up just run the following command:
 
 `python3 spotifyVisualiser.py <username>`
 
-Where <username> is the Spotify username you wish to log in with.
+Where `<username>` is the Spotify username you wish to log in with.
