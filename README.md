@@ -4,7 +4,7 @@ Spotify Visualiser
 Visualiser application that grabs information from a given user's currently playing Spotify song and generate visualisation data in realtime for it.
 
 # Dependencies
-Spotify Visualiser is written for Python3 using the spotipy library (https://github.com/plamere/spotipy), the current version of spotipy on pip is not up to date with the latest version, so run the following to grab the library direct from source:
+Spotify Visualiser is written for Python3 using the spotipy library (https://github.com/plamere/spotipy) to perform REST calls to the Spotify Web API. The current version of spotipy on pip is not up to date with the latest version, so run the following to grab the library direct from source:
 
 `pip3 install git+https://github.com/plamere/spotipy.git --upgrade`
 
