@@ -12,5 +12,5 @@ def getToken():
     return token
     
 if __name__ == "__main__":
-    songState = SongState(getToken())
+    songState = SongState(getToken(), True)
     songState.run()
