@@ -29,7 +29,9 @@ def onEvent(state, type):
 def onDraw():
     if songState.currentSignatures['beats'] == None:
         return
-
+        
+    global img
+    
     segmentProgress = songState.songProgress / 1000 - songState.currentSignatures['beats']['start']
     segmentEnd = songState.nextSignatures['beats']['start'] - songState.currentSignatures['beats']['start']
 
