@@ -34,6 +34,7 @@ class SongAnalyser:
         self.onDraw = None
         self.resetTime = False
         self.t1 = threading.Thread(target=self.analyseSongLoop)
+        self.exit = False
 
         for type in self.SIGNATURE_TYPES:
             self.currentSignatures[type] = None
@@ -48,7 +49,7 @@ class SongAnalyser:
     def run(self):
         """Starts this Song Analyser, creating a loop to keep track of current song position"""
         self.t1.start()
-        while True:
+        while not self.exit:
             self.mainLoop()
             
     def mainLoop(self):
@@ -103,11 +104,8 @@ class SongAnalyser:
         Checks the current song ID vs the Spotify Connect reported current song ID.\n
         If a change has occured, grab the song analysis data for the song.\n
         Updates the song progress timer to the currently reported Spotify Connect time\n
-        
-        TODO: This really needs to be done on it's own thread as the REST calls to the Spotify Web API can introduce delay we really don't want
         """
-        #This needs to be done on a thread at a regular interval
-        while True:
+        while not self.exit:
             currentTrack = self.spotify.currently_playing()
             if currentTrack:
                 currentId = currentTrack['item']['id']
@@ -128,4 +126,6 @@ class SongAnalyser:
     def onSegmentChange(self, segmentType: str, segment):
         self.onEvent(self, segmentType)
 
+    def stop(self):
+        self.exit = True
         
